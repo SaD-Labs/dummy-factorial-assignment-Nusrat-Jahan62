@@ -1,14 +1,28 @@
-ma// 020-TestCase-2.cpp
-// Source: https://github.com/catchorg/Catch2/blob/master/examples/020-TestCase-2.cpp
+#include<iostream>
+using namespace std;
 
-#define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
-#include "catch.hpp"
+int factorial(int n);
 
-int Factorial( int number ) {
-  if (number < 1) return 1;
-    else return Factorial(number- 1)*number;
-    
+int main()
+{
+    int n;
+
+    cout << "Enter a positive integer: ";
+    cin >> n;
+
+    cout << "Factorial of " << n << " = " << factorial(n);
+
+    return 0;
 }
+
+int factorial(int n)
+{
+    if(n > 1)
+        return n * factorial(n - 1);
+    else
+        return 1;
+}
+
 
 TEST_CASE( "2: Factorial of 0 is 15", "[multi-file:2]" ) {
     REQUIRE( Factorial(0) == 1 );
